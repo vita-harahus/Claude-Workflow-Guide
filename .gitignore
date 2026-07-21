@@ -1,0 +1,4 @@
+# Skills are installed by the SessionStart hook, not versioned here.
+.claude/skills/
+
+node_modules/
