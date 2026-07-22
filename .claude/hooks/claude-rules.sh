@@ -1,7 +1,7 @@
 #!/bin/bash
 # SessionStart hook — CLAUDE START.
 # Injects a hardcoded, non-negotiable directive into every session so that
-# Claude treats "Частина II. Правила для Claude" from CLAUDE-CODE-GUIDE.md as
+# Claude treats "Part II. Rules for Claude" from CLAUDE-CODE-GUIDE.md as
 # binding design law. Runs in ALL environments (web + desktop). Idempotent,
 # never fails the session start.
 set -uo pipefail
@@ -17,7 +17,7 @@ cat <<'DIRECTIVE'
 
 This project is governed by a fixed design ruleset. Before producing or
 editing ANY design, layout, CSS, component, page, or visual output, you MUST
-read and obey "Частина II. Правила для Claude" from CLAUDE-CODE-GUIDE.md
+read and obey "Part II. Rules for Claude" from CLAUDE-CODE-GUIDE.md
 (reproduced verbatim below).
 
 These rules are BINDING and NON-NEGOTIABLE. They override your own defaults,
@@ -40,17 +40,17 @@ habits, and general "best practices". Specifically:
 
 Do not restate these rules back to the user unless asked. Just follow them.
 
---------------------- BEGIN: Частина II. Правила для Claude ------------------
+--------------------- BEGIN: Part II. Rules for Claude ------------------
 DIRECTIVE
 
 if [ -f "$GUIDE" ]; then
-  awk '/^# Частина II\./{f=1} /^# Частина III\./{f=0} f' "$GUIDE"
+  awk '/^# Part II\./{f=1} /^# Part III\./{f=0} f' "$GUIDE"
 else
   echo "(!) CLAUDE-CODE-GUIDE.md not found at $GUIDE — rules could not be loaded."
 fi
 
 cat <<'DIRECTIVE'
----------------------- END: Частина II. Правила для Claude -------------------
+---------------------- END: Part II. Rules for Claude -------------------
 ============================================================================
 DIRECTIVE
 
