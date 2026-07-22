@@ -21,7 +21,7 @@
 
   /* Buttons (no shadows; transforms handled by GSAP) */
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:15px;
-    padding:15px 26px;border-radius:100px;border:1.5px solid transparent;cursor:pointer;transition:background .25s,color .2s;will-change:transform}
+    padding:15px 26px;border-radius:100px;border:1.5px solid transparent;cursor:pointer;transition:background .25s,color .2s}
   .btn-light{background:#fff;color:var(--ink)}
   .btn-light:hover{background:#f0efec}
   .btn-ghost{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.55);backdrop-filter:blur(6px)}
@@ -60,7 +60,7 @@
   .region{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:500;color:var(--ink);cursor:pointer}
 
   /* HERO with photo slider */
-  .hero{position:relative;display:grid;min-height:730px;margin-top:-68px;overflow:hidden;color:#fff;isolation:isolate;
+  .hero{position:relative;display:grid;min-height:730px;height:auto;margin-top:-68px;overflow:hidden;color:#fff;isolation:isolate;
     background:linear-gradient(155deg,#4c3a29,#8a6c48)}
   .hero-media{position:absolute;inset:0;z-index:0}
   .hero-media .slide{position:absolute;inset:0;opacity:0}
@@ -475,13 +475,13 @@
         hov(c,function(tl){ if(img) tl.to(img,{scale:1.07,duration:.7,ease:'power2.out'},0); if(cta) tl.to(cta,{paddingRight:14,duration:.3,ease:'power2.out'},0); }); });
       G.utils.toArray('.split').forEach(function(s){ var img=s.querySelector('.media img');
         hov(s,function(tl){ if(img) tl.to(img,{scale:1.05,duration:.8,ease:'power2.out'},0); }); });
-      G.utils.toArray('.icons a').forEach(function(i){ hov(i,function(tl){ tl.to(i,{y:-2,scale:1.1,duration:.25,ease:'power2.out'},0); }); });
+      G.utils.toArray('.icons a').forEach(function(i){ hov(i,function(tl){ tl.to(i,{scale:1.12,duration:.25,ease:'power2.out'},0); }); });
       G.utils.toArray('.fav').forEach(function(f){ hov(f,function(tl){ tl.to(f,{scale:1.15,color:'#d51f34',duration:.25,ease:'power2.out'},0); }); });
       G.utils.toArray('.sw').forEach(function(s){ hov(s,function(tl){ tl.to(s,{scale:1.25,duration:.2,ease:'power2.out'},0); }); });
       G.utils.toArray('.val').forEach(function(v){ var ic=v.querySelector('.vic');
-        hov(v,function(tl){ tl.to(ic,{y:-3,backgroundColor:'#0d0d0f',color:'#fff',duration:.25,ease:'power2.out'},0); }); });
+        hov(v,function(tl){ tl.to(ic,{backgroundColor:'#0d0d0f',color:'#fff',duration:.25,ease:'power2.out'},0); }); });
       G.utils.toArray('.fcol a').forEach(function(a){ hov(a,function(tl){ tl.to(a,{x:4,color:'#ffffff',duration:.22,ease:'power2.out'},0); }); });
-      G.utils.toArray('.fsoc a').forEach(function(a){ hov(a,function(tl){ tl.to(a,{y:-3,backgroundColor:'#d51f34',borderColor:'#d51f34',duration:.25,ease:'power2.out'},0); }); });
+      G.utils.toArray('.fsoc a').forEach(function(a){ hov(a,function(tl){ tl.to(a,{backgroundColor:'#d51f34',borderColor:'#d51f34',duration:.25,ease:'power2.out'},0); }); });
       G.utils.toArray('.arrow').forEach(function(a){ hov(a,function(tl){ tl.to(a,{scale:1.08,duration:.2,ease:'power2.out'},0); }); });
       G.utils.toArray('.brand').forEach(function(b){ var m=b.querySelector('.mark');
         hov(b,function(tl){ tl.to(m,{rotate:360,duration:.5,ease:'power2.inOut'},0); }); });
