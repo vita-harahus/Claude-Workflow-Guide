@@ -82,7 +82,10 @@
   .dot.on{background:#fff}
 
   /* Sections */
-  section{padding:76px 0}
+  section{padding:100px 0}
+  @media(min-width:1280px){section{padding:120px 0}}
+  @media(max-width:991px){section{padding:80px 0}}
+  @media(max-width:767px){section{padding:60px 0}}
   .sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px;gap:20px}
   .sec-head h2{font-size:clamp(26px,3.4vw,38px);letter-spacing:-.02em;color:var(--ink);font-weight:700;line-height:1.05}
   .sec-head .link{font-weight:600;font-size:15px;position:relative;color:var(--ink);padding-bottom:3px}
@@ -152,7 +155,7 @@
   .split .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform}
   .split .copy{background:var(--ink);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:64px}
   .split .copy h2{font-size:clamp(30px,3.6vw,46px);letter-spacing:-.02em;line-height:1.02;font-weight:700}
-  .split .copy p{margin:18px 0 28px;font-size:17px;opacity:.85;max-width:40ch}
+  .split .copy p{margin:18px 0 28px;font-size:17px;opacity:.85;max-width:48ch;text-wrap:pretty}
 
   /* Sale strip */
   .sale-strip{border-radius:20px;padding:46px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;background:var(--surface)}
@@ -167,9 +170,9 @@
   .val p{font-size:13.5px;color:var(--muted);margin-top:3px}
 
   /* Newsletter */
-  .news{text-align:center;max-width:620px;margin:0 auto}
+  .news{text-align:center;max-width:780px;margin:0 auto}
   .news h2{font-size:clamp(28px,3.4vw,40px);color:var(--ink);letter-spacing:-.02em;font-weight:700}
-  .news p{color:var(--muted);font-size:17px;margin:14px auto 26px;max-width:44ch;text-wrap:balance}
+  .news p{color:var(--muted);font-size:17px;margin:14px auto 26px;max-width:64ch;text-wrap:balance}
   .news form{display:flex;gap:10px;max-width:460px;margin:0 auto}
   .news input{flex:1;padding:15px 20px;border:1.5px solid var(--line);border-radius:100px;font:inherit;outline:2px solid transparent;outline-offset:2px;transition:border-color .2s,outline-color .2s}
   .news input:focus{border-color:var(--ink);outline-color:rgba(13,13,15,.2)}
@@ -240,25 +243,25 @@
     <div class="sec-head" data-reveal><h2>Find your fit</h2><a href="#" class="link">Shop all<i class="u"></i></a></div>
     <div class="cats">
       <a href="#new" class="cat" data-reveal><img data-q="woman activewear leggings gym" data-o="portrait" alt="Women's activewear"><div class="c-in"><h3>Women</h3><br><span class="cta">Shop the collection</span></div></a>
-      <a href="#new" class="cat" data-reveal><img data-q="man athletic sportswear training" data-o="portrait" alt="Men's activewear"><div class="c-in"><h3>Men</h3><br><span class="cta">Shop the collection</span></div></a>
+      <a href="#new" class="cat" data-reveal><img data-q="man athletic fitness portrait gym" data-o="portrait" alt="Men's activewear"><div class="c-in"><h3>Men</h3><br><span class="cta">Shop the collection</span></div></a>
       <a href="#" class="cat" data-reveal><img data-q="gym duffel bag accessories" data-o="portrait" alt="Accessories"><div class="c-in"><h3>Accessories</h3><br><span class="cta">Bags, socks &amp; more</span></div></a>
     </div>
   </div>
 </section>
 
 <!-- What's New -->
-<section id="new" style="padding-top:12px">
+<section id="new" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head" data-reveal><h2>What’s new this week</h2><a href="#" class="link">View all<i class="u"></i></a></div>
     <div class="prods">
       <article class="card" data-reveal>
-        <div class="ph"><span class="badge">New</span><button class="fav" type="button" aria-label="Save item">♡</button><button class="add" type="button">Add to bag</button><div class="fill"><img data-q="orange track jacket sportswear" data-o="portrait" alt="Textured nylon jacket"><div class="tee" style="background:linear-gradient(160deg,#e8542b,#c23c19)"></div></div></div>
+        <div class="ph"><span class="badge">New</span><button class="fav" type="button" aria-label="Save item">♡</button><button class="add" type="button">Add to bag</button><div class="fill"><img data-q="orange track jacket sportswear" data-o="portrait" data-top="1" alt="Textured nylon jacket"><div class="tee" style="background:linear-gradient(160deg,#e8542b,#c23c19)"></div></div></div>
         <h4>License to Train Textured Nylon Jacket</h4>
         <div class="price">$168 USD</div>
         <div class="swatches"><span class="sw" style="background:#e8542b"></span><span class="sw" style="background:#2a3446"></span><span class="sw" style="background:#c9c3b8"></span></div>
       </article>
       <article class="card" data-reveal>
-        <div class="ph"><span class="badge">New</span><button class="fav" type="button" aria-label="Save item">♡</button><button class="add" type="button">Add to bag</button><div class="fill"><img data-q="blue leggings woman fitness" data-o="portrait" alt="High-rise training tight"><div class="tee" style="background:linear-gradient(160deg,#2f74c4,#295fa6)"></div></div></div>
+        <div class="ph"><span class="badge">New</span><button class="fav" type="button" aria-label="Save item">♡</button><button class="add" type="button">Add to bag</button><div class="fill"><img data-q="blue leggings woman fitness" data-o="portrait" data-top="1" alt="High-rise training tight"><div class="tee" style="background:linear-gradient(160deg,#2f74c4,#295fa6)"></div></div></div>
         <h4>Everflow High-Rise Train Tight 25"</h4>
         <div class="price">$98 USD</div>
         <div class="swatches"><span class="sw" style="background:#2f74c4"></span><span class="sw" style="background:#111"></span><span class="sw" style="background:#7d8b6f"></span></div>
@@ -280,13 +283,13 @@
 </section>
 
 <!-- Editorial split -->
-<section style="padding-top:12px">
+<section style="padding-top:0">
   <div class="wrap">
     <div class="split" data-reveal>
-      <div class="media"><img data-q="woman yoga fitness studio portrait" data-o="portrait" data-top="1" alt="Everflow technology"></div>
+      <div class="media"><img data-q="woman pilates reformer studio fitness" data-o="portrait" data-top="1" alt="Everflow technology"></div>
       <div class="copy">
         <h2>Sweat-wicking fabric, engineered for heat.</h2>
-        <p>Four-way stretch and a fast-drying weave built for hot Pilates, reformer flows and everything in between.</p>
+        <p>Four-way stretch and a fast-drying weave, engineered to move with you through hot Pilates, reformer flows and everything in between.</p>
         <div><a href="#" class="btn btn-light">Explore the collection <span class="arw">→</span></a></div>
       </div>
     </div>
@@ -294,7 +297,7 @@
 </section>
 
 <!-- Sale strip -->
-<section id="sale" style="padding-top:12px">
+<section id="sale" style="padding-top:0">
   <div class="wrap">
     <div class="sale-strip" data-reveal>
       <div>
@@ -375,7 +378,7 @@
   var PEXELS_KEY='WaeBQ61eXdor76RHLLCa3G5EYRvu2MJPqd1V35nRkfVZDQg4X5bJngYq';
   // Pick from the top relevant, high-resolution results (Pexels sorts by relevance).
   async function pexels(q,o,top){
-    o=o||'landscape'; top=top||2;
+    o=o||'landscape'; top=top||1;
     try{
       var r=await fetch('https://api.pexels.com/v1/search?query='+encodeURIComponent(q)+'&per_page=20&orientation='+o,{headers:{Authorization:PEXELS_KEY}});
       if(!r.ok) return null;
