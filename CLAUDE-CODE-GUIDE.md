@@ -144,6 +144,11 @@ at ≤991, then `630px` at ≤767 (carries to 360).
 @media (max-width: 767px)  { .hero { min-height: 630px; } }    /* Small + Tiny (568, 360) */
 ```
 
+**Header over the hero.** The header always sits **on top of** the hero and **never reduces its height** — the
+hero keeps the full `min-height` above. The header overlays the hero (transparent over it, e.g. pulled up with
+a negative margin or positioned as an overlay), and turns solid once the user scrolls past the hero. The hero's
+min-height is measured as if the header were not there.
+
 ## Section structure (single for all pages)
 
 ```html
@@ -240,6 +245,21 @@ None (=0)**. Radius: XS 4 (tags) · S 6 (inputs) · M 8 (cards) · L 10 (panels)
   `card-link`, `foot-link`).
 - **All spacing is set via flex/grid containers** (`grid-row-gap`/`grid-column-gap` on the parent element),
   **not** on the texts, links or `<p>` themselves. A text element carries no spacing of its own.
+
+## 🎬 Animation — cinematic, never default-simple
+
+Motion is a core part of the quality bar, not decoration bolted on at the end.
+
+- **Nothing default-simple.** No cheap, generic effects. Use **cinematic, smooth motion** (eased, purposeful,
+  well-timed) — GSAP / ScrollTrigger (or equivalent), with proper easing curves and staggering.
+- **Buttons are NOT a plain "hop".** Do not animate a button as a simple up-down bounce/jump on hover. Use
+  considered micro-interactions (e.g. a smooth lift paired with an easing curve and a coordinated icon/label
+  shift, a fill/underline transition) — subtle, intentional, on-brand. If the only idea is "make it jump",
+  leave it static instead.
+- **Principles:** ease over linear; build hover timelines once and play/reverse them; stagger grouped items;
+  respect `prefers-reduced-motion` (no motion when the user opts out); motion must have a reason (guide the eye,
+  reveal hierarchy, give feedback) — never movement for its own sake. Excessive or symmetric same-type
+  animation is still forbidden (see the AI-defaults rule).
 
 ## ⛔ Components — a single master element
 
