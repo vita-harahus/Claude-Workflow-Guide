@@ -400,7 +400,7 @@
   /* ---- HERO photo slider ---- */
   var SLIDES=[
     {q:'fitness woman workout gym portrait', h:'Get intense in Everflow™', p:'Fast-drying technical fabric keeps you focused on your hottest, spiciest moves.'},
-    {q:'woman running athletic outdoor sport', h:'Built to go the distance', p:'Lightweight, breathable support engineered for every mile.'},
+    {q:'woman trail running nature mountains', h:'Built to go the distance', p:'Lightweight, breathable support engineered for every mile.'},
     {q:'woman yoga pose fitness studio', h:'Find your flow', p:'Buttery-soft, four-way stretch fabric that moves exactly how you do.'}
   ];
   var media=document.querySelector('.hero-media'),
@@ -409,7 +409,7 @@
 
   SLIDES.forEach(function(s,i){
     var d=document.createElement('div'); d.className='slide'+(i===0?' first':''); media.appendChild(d); layers.push(d);
-    pexels(s.q,'landscape').then(function(u){
+    pexels(s.q,'landscape',1).then(function(u){
       if(u){ var img=new Image(); img.src=u; img.alt=''; d.appendChild(img); }
       else { d.style.background='linear-gradient(155deg,#4c3a29,#8a6c48)'; }
     });
