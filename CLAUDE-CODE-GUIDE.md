@@ -90,7 +90,10 @@ The design system below is a **technical markup skeleton**, not a visual recipe.
 be **unique and creative, at the level of Awwwards work**.
 
 **By default, typical AI elements are not used:**
-- ❌ Eyebrow subtitle with a dot (`• LABEL`) above sections — only at the designer's direct request.
+- ❌ Eyebrow / kicker / small subtitle above a section heading — **forbidden by default**. Do NOT add a small
+  label, tagline, or `• LABEL` line above an `<h2>` (or any section title). The default state is: **no eyebrow,
+  no subtitle**. Add one ONLY when the designer asks for it by name in that specific request; never infer it,
+  never add it "for balance", "for rhythm", or because a section "looks empty". If in doubt, leave it out.
 - ❌ Numbers `01/02/03` when the content is not a real sequence.
 - ❌ The templated hero "big number + label + gradient".
 - ❌ Stock AI palettes (cream + serif + terracotta; black background + acid accent; "newspaper" hairline
@@ -121,7 +124,7 @@ All points are subject to checking: **1920 / 1440 / 1280 / 992 / 768 / 568 / 360
 <section class="section section-name">
   <div class="base-container">
     <div class="section-head">
-      <!-- eyebrow — only on the designer's request, not by default -->
+      <!-- No eyebrow/subtitle above the heading by default. Add one ONLY on explicit request. -->
       <h2 class="heading-spacer-top">Section Title</h2>
       <p class="lead">Supporting description.</p>
     </div>
@@ -251,7 +254,7 @@ value, sizes ±1px with group separation (font-size → Typography, spacing → 
 
 # Final checklist
 
-- [ ] **⛔ Uniqueness:** Awwwards-level design, no AI defaults (eyebrow — only on request); a signature element present.
+- [ ] **⛔ Uniqueness:** Awwwards-level design, no AI defaults; **no eyebrow/subtitle above any section heading unless explicitly requested**; a signature element present.
 - [ ] **⛔ Components:** declared as a master element, identical on all pages, a change propagates to all instances.
 - [ ] **🌐 Language:** all page content is in English.
 - [ ] Render matches the layout; 0 console errors; all 7 breakpoints checked.
