@@ -51,6 +51,12 @@ Run the design-system skill to verify the client's existing design system, or bu
 first page assembled is the Style Guide (colors, type scale, buttons, links, cards), which confirms the system
 is applied.
 
+### Step 7. Optimize the site
+
+Before handoff, optimize the finished site — **compress all video and photos** so the page stays fast. Serve
+appropriately sized assets (no oversized files), lazy-load media below the fold, and check load time and the
+console (0 errors). See Part II, "Images & media" for the mandatory optimization rules Claude applies.
+
 ---
 
 # Part II. Rules for Claude
