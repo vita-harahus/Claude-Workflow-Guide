@@ -15,70 +15,41 @@ The document is split into three parts:
 
 # Part I. For the designer — step-by-step process
 
-Actions the designer performs on their own. Each step is a separate, complete operation.
+Actions the designer performs, in order. Each step is a discrete operation.
 
-### Step 1. Installation (one-time)
+Prerequisite (one-time): Claude Code is installed — `npm install -g @anthropic-ai/claude-code`.
 
-Work is done in the **Claude Code desktop app** or in the terminal. The web version works only with a
-GitHub repository in the cloud — not with a local folder on your computer.
+### Step 1. Load the project archive
 
-```bash
-npm install -g @anthropic-ai/claude-code
-```
+Place the client ZIP archive into the project folder and unpack it. The archive holds all incoming materials:
+brief, references, logo, fonts, images, brand guidelines and, if available, a ready design system.
 
-### Step 2. Project folder and client materials
+### Step 2. Connect the folder to Claude
 
-Create a project folder on your computer and put **all incoming materials** into it: the brief, references,
-logo, fonts, images, brand guidelines and — if available — a ready design system.
+Open the folder in the Claude Code app, or `cd` into it in the terminal and run `claude`. The folder becomes
+the session working directory, and Claude gains access to all materials.
 
-```bash
-mkdir ~/Desktop/nero-run        # → move all client materials into the folder
-```
+### Step 3. Load the guide and hooks
 
-### Step 3. Sync with Claude Code
+Instruct Claude: "Run the guide and hooks." Claude loads the Part II ruleset and runs the session hooks, so
+every subsequent action follows the design rules.
 
-Open the folder in the app (or in the terminal). It becomes the working directory of the session, and Claude
-gets access to all the materials.
+### Step 4. Set the design direction
 
-```bash
-cd ~/Desktop/nero-run && claude
-```
+Describe the design prompt for the project, or have Claude recreate the client's existing style guide. This
+defines the colors, typography, components and overall direction before building begins.
 
-### Step 4. Design system — one of two paths
+### Step 5. Start the local preview (localhost)
 
-- **Load an existing one** — put the client's design-system files into the folder; Claude works from them.
-- **Create from scratch** — Claude builds the design system per the rules in Part II. The first page assembled
-  is the **Style Guide** (colors, type scale, buttons, links, cards) — this confirms the system is applied.
+Start localhost with the `local-preview` skill: the result is served at `http://localhost:<port>` and viewed
+live in the browser with real images and animations. If the session drops or the server stops, bring it back
+up with the `localhost-up` skill.
 
-### Step 5. Local preview (localhost)
+### Step 6. Verify or create the design system
 
-As soon as the first pages appear, a local server is started — the result is seen live in the browser, with
-real images and animations. For this the designer installs **two skills**:
-
-- **`local-preview`** — starts a local HTTP server and serves the address `http://localhost:<port>` (first
-  run; works on static `.html/.css/.js`).
-- **`localhost-up`** — (re)starts the server when localhost goes down, stops, or after a session restart.
-
-### Step 6. Building pages section by section
-
-Work is done with code, not with screenshots. Point edits touch only the requested element. Images are pulled
-from real photo stocks via API (Pexels / Unsplash).
-
-### Step 7. Components
-
-Repeating blocks (navbar, footer, cards, CTA) are declared a **master element** once — after that any change
-propagates to all instances on all pages. Details — Part II, section "Components".
-
-### Step 8. Responsiveness
-
-All **7 breakpoints** are checked (1920 / 1440 / 1280 / 992 / 768 / 568 / 360); 0 console errors.
-
-### Step 9. Handoff to development
-
-When needed, the project is handed over to Webflow — the sequence and rules are described in **Part III**.
-
-> **Key condition.** A `CLAUDE.md` file with the Part II rules sits in the root of the folder. Claude reads it
-> at the start of the session and follows the rules automatically.
+Run the design-system skill to verify the client's existing design system, or build one from scratch. The
+first page assembled is the Style Guide (colors, type scale, buttons, links, cards), which confirms the system
+is applied.
 
 ---
 
