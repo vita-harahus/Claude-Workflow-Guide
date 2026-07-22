@@ -1,4 +1,9 @@
-# Skills are installed by the SessionStart hook, not versioned here.
-.claude/skills/
+# Skills: only the two localhost skills ship with the project.
+# Any other skills a session installs stay untracked.
+.claude/skills/*
+!.claude/skills/local-preview/
+!.claude/skills/local-preview/**
+!.claude/skills/localhost-up/
+!.claude/skills/localhost-up/**
 
 node_modules/

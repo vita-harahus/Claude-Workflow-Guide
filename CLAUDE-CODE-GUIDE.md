@@ -34,6 +34,10 @@ the session working directory, and Claude gains access to all materials.
 Instruct Claude: "Run the guide and hooks." Claude loads the Part II ruleset and runs the session hooks, so
 every subsequent action follows the design rules.
 
+If your environment doesn't have the two localhost skills yet, also tell Claude: **"Install my skills."** The
+`local-preview` and `localhost-up` skills ship with the project (in `.claude/skills/`), so Claude sets them up
+from there — no manual download needed.
+
 ### Step 4. Set the design direction
 
 Describe the design prompt for the project, or have Claude recreate the client's existing style guide. This
