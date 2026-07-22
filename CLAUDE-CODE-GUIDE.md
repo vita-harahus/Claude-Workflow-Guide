@@ -215,7 +215,17 @@ Example roles: `Accent #0162ff` · `Accent Light #eaf1ff` · `Accent Dark #0148b
 Scales (example): body text XXS 14 → XXL 24px; weights 300–800; line-height 1em→1.55; letter-spacing
 −1.5→0px.
 
-## Spacing / Radius
+## Text balance (line rag)
+
+Multi-line text is written **balanced**, not left to wrap arbitrarily. The rule of thumb: **the first line is
+about 10 characters longer than the line below it**, giving a deliberate top-heavy rag instead of a ragged or
+bottom-heavy shape.
+
+- Applies to: hero **H1 + its paragraph**, section **H2 + supporting description/lead**, and any headline+copy pair.
+- Tune the **copy length** so each line breaks where intended; pair it with `text-wrap: balance` on headings
+  and `text-wrap: pretty` on body copy.
+- Avoid a short orphan first line, a single dangling word on the last line, and a long-then-tiny second line.
+  Target shape: each line slightly shorter than the one above it (≈10 characters step).
 
 Spacing is set with variables that have per-breakpoint modes; text margin is bound to the variable **Spacing
 None (=0)**. Radius: XS 4 (tags) · S 6 (inputs) · M 8 (cards) · L 10 (panels) · XL 100px (pills — buttons/badges).
