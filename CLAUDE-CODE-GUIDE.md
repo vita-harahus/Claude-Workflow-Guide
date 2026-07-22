@@ -161,7 +161,11 @@ at ≤991, then `630px` at ≤767 (carries to 360).
 
 - A section = `<section>` + `section` + a subclass (`section trust`). Content is placed in `base-container`.
 - **`base-container`:** `max-width` is defined by the designer per project (placed in a variable, single for
-  all), `margin: auto`, `width: 100%`, `padding: 0 15px`.
+  all), `margin: auto`, `width: 100%`.
+- **`base-container` left/right padding is hardcoded to `15px` on ALL breakpoints** (1920 / 1440 / 1280 / 992
+  / 768 / 568 / 360). Set it as longhand `padding-left: 15px; padding-right: 15px;` — do not vary it per
+  breakpoint. This is the default and stays `15px` until the designer explicitly changes it. (Top/bottom
+  padding of the container stays `0`; vertical rhythm comes from `section*` padding.)
 - **Section padding is set only via `section` / `section-top` / `section-bot`** (scale below), not on the
   section's own class.
 - Dark sections: the background is set on the section class; child elements get the `on-dark` class.
