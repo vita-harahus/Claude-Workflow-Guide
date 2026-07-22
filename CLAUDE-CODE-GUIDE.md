@@ -205,6 +205,24 @@ Example roles: `Accent #0162ff` · `Accent Light #eaf1ff` · `Accent Dark #0148b
 `Off White #FAFAF9` · `Ink #111` · `Muted rgba(17,17,17,.62)` · `Line Light rgba(17,17,17,.10)` ·
 `Line Dark rgba(255,255,255,.16)`.
 
+## Images & media (auto-sourced + optimized)
+
+Claude fills **every image slot with a real, top-quality photo automatically** — immediately, without being
+asked and without leaving gradients/placeholders as the final state.
+
+- **Top pick, deterministic.** Source real photography (stock API at runtime) and take the **best-matching,
+  high-resolution result** for each slot — the top relevant hit, not a random one. The choice is **locked** so
+  images don't reshuffle between reloads. The query matches the slot's context and the brand's editorial tone.
+- **Right size per slot.** Request an appropriately sized asset — hero/full-width large, cards medium,
+  thumbnails/avatars small. Never load an oversized image into a small slot.
+
+**Resource optimization is mandatory on every image (never an afterthought):**
+- `object-fit: cover` so images never stretch or distort; dimensions come from **CSS**, not `<img>` attributes.
+- `loading="lazy"` for everything below the fold (hero/above-the-fold stays eager).
+- Graceful `onerror` fallback so a broken URL fails silently (hide or drop to the block's gradient).
+- Meaningful `alt` text (describe the content — never "image"/"photo").
+- Reserve space to avoid layout shift (aspect-ratio / sized container).
+
 ## Typography
 
 **Fonts are defined by the designer per project.** Mandatory rules:
