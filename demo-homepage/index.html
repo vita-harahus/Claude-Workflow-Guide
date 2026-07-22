@@ -39,18 +39,8 @@
     font-size:18px;line-height:1;background:none;border:0}
 
   /* Header */
-  /* Header overlays the hero (never eats its height); solidifies on scroll */
-  header{position:sticky;top:0;z-index:60;background:transparent;border-bottom:1px solid transparent;
-    transition:background .35s ease,border-color .35s ease}
-  header.solid{background:#fff;border-bottom-color:var(--line)}
-  header .brand,header .mainnav a,header .region,header .icons{color:#fff;transition:color .35s ease}
-  header.solid .brand,header.solid .mainnav a,header.solid .region,header.solid .icons{color:var(--ink)}
-  header .search{background:rgba(255,255,255,.16);color:#fff}
-  header .search input{color:#fff}
-  header .search input::placeholder{color:rgba(255,255,255,.85)}
-  header.solid .search{background:var(--surface);color:var(--muted)}
-  header.solid .search input{color:var(--ink)}
-  header.solid .search input::placeholder{color:var(--muted)}
+  /* Header: solid background, overlays the hero (never adds to its height) */
+  header{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid var(--line)}
   .nav{display:flex;align-items:center;gap:34px;height:68px}
   .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;letter-spacing:-.02em;color:var(--ink)}
   .brand .mark{width:26px;height:26px;border-radius:50%;background:var(--red);display:grid;place-items:center;color:#fff;font-size:14px;font-weight:800}
@@ -78,7 +68,6 @@
   .hero-media .slide img{width:100%;height:100%;object-fit:cover}
   .hero::before{content:"";position:absolute;inset:0;z-index:1;
     background:
-      linear-gradient(180deg, rgba(8,6,4,.5) 0%, rgba(8,6,4,0) 20%),
       linear-gradient(90deg, rgba(8,6,4,.7) 0%, rgba(8,6,4,.32) 44%, rgba(8,6,4,0) 70%),
       linear-gradient(0deg, rgba(8,6,4,.5) 0%, transparent 42%)}
   .hero-inner{position:relative;z-index:2;width:100%;align-self:stretch;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:74px}
@@ -234,7 +223,7 @@
 </header>
 
 <!-- HERO -->
-<section class="hero" style="padding:0" id="top">
+<section class="hero" style="padding:68px 0 0" id="top">
   <div class="hero-media"></div>
   <div class="wrap hero-inner">
     <h1>Get intense in Everflow™</h1>
@@ -387,14 +376,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
   document.querySelector('.promo .x').addEventListener('click',function(){this.closest('.promo').style.display='none';});
-
-  /* ---- Header: transparent over hero, solid once scrolled past it ---- */
-  (function(){
-    var hdr=document.querySelector('header'), hero=document.querySelector('.hero');
-    if(!hdr||!hero) return;
-    function onScroll(){ hdr.classList.toggle('solid', window.scrollY > (hero.offsetTop + hero.offsetHeight - 90)); }
-    window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
-  })();
 
   /* ---- Pexels image sourcing (runtime; graceful fallback to gradient) ---- */
   var PEXELS_KEY='WaeBQ61eXdor76RHLLCa3G5EYRvu2MJPqd1V35nRkfVZDQg4X5bJngYq';

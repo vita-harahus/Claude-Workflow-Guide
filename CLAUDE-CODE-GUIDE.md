@@ -144,10 +144,11 @@ at ≤991, then `630px` at ≤767 (carries to 360).
 @media (max-width: 767px)  { .hero { min-height: 630px; } }    /* Small + Tiny (568, 360) */
 ```
 
-**Header over the hero.** The header always sits **on top of** the hero and **never reduces its height** — the
-hero keeps the full `min-height` above. The header overlays the hero (transparent over it, e.g. pulled up with
-a negative margin or positioned as an overlay), and turns solid once the user scrolls past the hero. The hero's
-min-height is measured as if the header were not there.
+**Header over the hero.** The header sits **on top of** the hero and **never adds to its height** — the hero
+keeps its full `min-height` (e.g. `100vh` fills exactly one viewport, header included). The header keeps its
+**own solid background** (it is not forced transparent). **The hero's top padding always equals the header
+height** so hero content clears the header — **hardcode this**. Implement by overlaying the header (e.g. pull
+the hero up by the header height with a negative margin) and setting `padding-top: <header-height>` on the hero.
 
 ## Section structure (single for all pages)
 
