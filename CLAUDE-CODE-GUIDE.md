@@ -118,6 +118,32 @@ solution that would fit any similar page is reworked.
 Styles set on Base cascade both up and down. **An override is applied only where the value differs from Base.**
 All points are subject to checking: **1920 / 1440 / 1280 / 992 / 768 / 568 / 360**.
 
+## Hero / banner — min-height (hardcoded)
+
+The hero/banner has a **fixed minimum height per breakpoint**. These values are mandatory and are not changed
+per project:
+
+| Breakpoint | min-height |
+|---|---|
+| Base (992–1279, incl. 1024) | `730px` |
+| Large (1280–1439) | `730px` |
+| XL (1440–1919) | `100vh` |
+| XXL (1920+) | `100vh` |
+| Medium (768–991) | `700px` |
+| Small (568–767) | `630px` |
+| Tiny (360–567) | `630px` |
+
+Applied via `min-height` on the hero (not `height`, so content can still grow the block). Base is `730px`
+and cascades up to Large; the override to `100vh` starts at **1440** and carries to 1920. Downward: `700px`
+at ≤991, then `630px` at ≤767 (carries to 360).
+
+```css
+.hero { min-height: 730px; }                                  /* Base + Large (1024, 1280) */
+@media (min-width: 1440px) { .hero { min-height: 100vh; } }    /* XL + XXL (1440, 1920) */
+@media (max-width: 991px)  { .hero { min-height: 700px; } }    /* Medium (768) */
+@media (max-width: 767px)  { .hero { min-height: 630px; } }    /* Small + Tiny (568, 360) */
+```
+
 ## Section structure (single for all pages)
 
 ```html
