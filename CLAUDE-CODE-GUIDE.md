@@ -143,16 +143,22 @@ per project:
 | Small (568–767) | `630px` |
 | Tiny (360–567) | `630px` |
 
-Applied via `min-height` on the hero (not `height`, so content can still grow the block). Base is `730px`
-and cascades up to Large; the override to `100vh` starts at **1440** and carries to 1920. Downward: `700px`
-at ≤991, then `630px` at ≤767 (carries to 360).
+These are **`min-height` only — never a fixed `height`.** The hero's `height` stays **`auto`**: it grows to fit
+its content, and **content inside must never overlap** (no clipping, no stacked-on-top-of-each-other). The
+min-height is just the floor. Base is `730px` and cascades up to Large; the override to `100vh` starts at
+**1440** and carries to 1920. Downward: `700px` at ≤991, then `630px` at ≤767 (carries to 360).
 
 ```css
-.hero { min-height: 730px; }                                  /* Base + Large (1024, 1280) */
+.hero { min-height: 730px; height: auto; }                    /* Base + Large (1024, 1280) — never a fixed height */
 @media (min-width: 1440px) { .hero { min-height: 100vh; } }    /* XL + XXL (1440, 1920) */
 @media (max-width: 991px)  { .hero { min-height: 700px; } }    /* Medium (768) */
 @media (max-width: 767px)  { .hero { min-height: 630px; } }    /* Small + Tiny (568, 360) */
 ```
+
+**Banner text — max 2 lines (strict).** In the hero, the H1 title and its paragraph are each **no more than
+2 lines**. Write copy that fits in ≤2 lines at the given size, and cap it in CSS as a hard guard
+(`display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; overflow:hidden`). Never let hero
+text run to 3+ lines.
 
 **Header over the hero.** The header sits **on top of** the hero and **never adds to its height** — the hero
 keeps its full `min-height` (e.g. `100vh` fills exactly one viewport, header included). The header keeps its
@@ -281,10 +287,10 @@ Motion is a core part of the quality bar, not decoration bolted on at the end.
 
 - **Nothing default-simple.** No cheap, generic effects. Use **cinematic, smooth motion** (eased, purposeful,
   well-timed) — GSAP / ScrollTrigger (or equivalent), with proper easing curves and staggering.
-- **Buttons are NOT a plain "hop".** Do not animate a button as a simple up-down bounce/jump on hover. Use
-  considered micro-interactions (e.g. a smooth lift paired with an easing curve and a coordinated icon/label
-  shift, a fill/underline transition) — subtle, intentional, on-brand. If the only idea is "make it jump",
-  leave it static instead.
+- **Buttons are NOT a plain "hop".** Do NOT translate a button on the Y axis on hover (no `y:-3` lift, no
+  bounce/jump) and no scale-pop. Use flat, considered micro-interactions instead: a smooth **background/colour
+  fill**, an **underline/border** transition, or a **gentle glide of the arrow/icon** inside the button — no
+  vertical movement of the button itself. If the only idea is "make it jump", leave it static.
 - **Principles:** ease over linear; build hover timelines once and play/reverse them; stagger grouped items;
   respect `prefers-reduced-motion` (no motion when the user opts out); motion must have a reason (guide the eye,
   reveal hierarchy, give feedback) — never movement for its own sake. Excessive or symmetric same-type

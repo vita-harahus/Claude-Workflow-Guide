@@ -71,8 +71,10 @@
       linear-gradient(90deg, rgba(8,6,4,.7) 0%, rgba(8,6,4,.32) 44%, rgba(8,6,4,0) 70%),
       linear-gradient(0deg, rgba(8,6,4,.5) 0%, transparent 42%)}
   .hero-inner{position:relative;z-index:2;width:100%;align-self:stretch;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:74px}
-  .hero h1{font-size:clamp(48px,8.4vw,116px);line-height:.94;font-weight:600;letter-spacing:-.035em;max-width:13ch}
-  .hero p{font-size:clamp(17px,2vw,23px);margin:24px 0 34px;max-width:46ch;font-weight:400}
+  .hero h1{font-size:clamp(48px,8.4vw,116px);line-height:.94;font-weight:600;letter-spacing:-.035em;max-width:13ch;
+    display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;text-wrap:balance}
+  .hero p{font-size:clamp(17px,2vw,23px);margin:24px 0 34px;max-width:46ch;font-weight:400;
+    display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;text-wrap:balance}
   .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
   .hero-nav{position:absolute;right:15px;bottom:66px;z-index:3;display:flex;gap:10px}
   .arrow{width:54px;height:54px;border-radius:50%;background:rgba(15,15,15,.42);border:1px solid rgba(255,255,255,.4);
@@ -460,8 +462,9 @@
       // Hover helper: timeline play/reverse (best practice — build once)
       function hov(el, build){ var tl=G.timeline({paused:true}); build(tl); el.addEventListener('mouseenter',function(){tl.play();}); el.addEventListener('mouseleave',function(){tl.reverse();}); }
 
+      // Buttons: NO hop. Smooth background (CSS) + gentle arrow glide only — no vertical/scale jump.
       G.utils.toArray('.btn').forEach(function(b){ var a=b.querySelector('.arw');
-        hov(b,function(tl){ tl.to(b,{y:-3,duration:.3,ease:'power2.out'},0); if(a) tl.to(a,{x:5,duration:.3,ease:'power2.out'},0); }); });
+        if(a) hov(b,function(tl){ tl.to(a,{x:6,duration:.4,ease:'power2.out'},0); }); });
       G.utils.toArray('.mainnav a').forEach(function(l){ var u=l.querySelector('.u'); if(!u)return;
         hov(l,function(tl){ tl.fromTo(u,{scaleX:0,transformOrigin:'left'},{scaleX:1,duration:.32,ease:'power3.out'},0); }); });
       G.utils.toArray('.sec-head .link').forEach(function(l){ var u=l.querySelector('.u');
