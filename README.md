@@ -98,9 +98,9 @@ npm i -g ui-ux-pro-max-cli && uipro init --ai claude --global   # → ~/.claude/
 
 | Клас | Base | 1280+ | 768–991 | ≤767 |
 |---|---|---|---|---|
-| `section` | 100px 0 | 120px 0 | 80px 0 | 60px 0 |
-| `section-top` | 100px 0 0 | 120px 0 0 | 80px 0 0 | 60px 0 0 |
-| `section-bot` | 0 0 100px | 0 0 120px | 0 0 80px | 0 0 60px |
+| `section` | 100px 0 | 130px 0 | 80px 0 | 60px 0 |
+| `section-top` | 100px 0 0 | 130px 0 0 | 80px 0 0 | 60px 0 0 |
+| `section-bot` | 0 0 100px | 0 0 130px | 0 0 80px | 0 0 60px |
 
 ### 2.3 Нейминг класів
 
