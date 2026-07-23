@@ -117,6 +117,16 @@ a baseline level of quality (responsiveness, visible keyboard focus, `prefers-re
 building, a short plan is drafted (palette, fonts, layout, signature) and checked against the brief: a default
 solution that would fit any similar page is reworked.
 
+## ⛔ Never carry UI between projects
+
+This guide (and any demo like the `forma` homepage) defines **structure and method only — never a visual
+template to copy.** Do NOT carry a previous project's concrete UI elements into a new design session: not the
+header/navbar look, not the hero treatment, not button shapes, colours, gradients, card styles, or specific
+component designs. Each project's UI is designed fresh from **its own** brief, brand and references. Reuse the
+*rules* (breakpoints, naming, spacing/radius system, structure, guardrails) — not the *appearance*. If a new
+project's header (or any component) starts resembling a previous one, that is a red flag: stop and redesign it
+uniquely. Two projects should never look like siblings.
+
 ## Breakpoints
 
 | Breakpoint | Range | Direction |
