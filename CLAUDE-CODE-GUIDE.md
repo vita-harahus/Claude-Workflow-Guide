@@ -266,6 +266,13 @@ asked and without leaving gradients/placeholders as the final state.
 Scales (example): body text XXS 14 → XXL 24px; weights 300–800; line-height 1em→1.55; letter-spacing
 −1.5→0px.
 
+- **Whole-integer sizes only — no fractional px on ANY breakpoint.** Never ship sizes like `13.5px`, `15.5px`
+  or a fluid `66.4px`. Round every size to the nearest whole pixel.
+- **Prefer stepped sizes per breakpoint (media queries) over fluid `clamp()`.** `clamp(min, vw, max)` produces
+  fractional values at in-between widths — avoid it for type. Instead set a whole-px size per breakpoint so each
+  breakpoint renders a clean integer (e.g. Display `48 / 72 / 104px`, H2 `28 / 36 / 44px`). If `clamp()` is used
+  at all, its `min` and `max` must be whole px and the result must still read as a clean integer.
+
 ## Text balance (line rag)
 
 Multi-line text is written **balanced**, not left to wrap arbitrarily. The rule of thumb: **the first line is
