@@ -268,6 +268,13 @@ asked and without leaving gradients/placeholders as the final state.
 - `loading="lazy"` for everything below the fold (hero/above-the-fold stays eager).
 - Graceful `onerror` fallback so a broken URL fails silently (hide or drop to the block's gradient).
 - Meaningful `alt` text (describe the content — never "image"/"photo").
+
+**Video — HOOK (ALWAYS).** Every `<video>` is **`loop`ed** — it never stops on the last frame. Background/hero
+video is **always** `muted loop playsinline autoplay` (all four, so it loops seamlessly and autoplays on mobile).
+People/faces in a media slot must be **framed proportionally and consistently** — use `object-fit: cover` plus
+`object-position` (e.g. `center 22%`) so faces are never cropped at the chin/forehead; keep the same crop across
+a set (team grids, avatars). When a media block sits directly above the next section, mask the seam with a
+bottom gradient that fades the media fully into the next section's background — never a hard crop.
 - Reserve space to avoid layout shift (aspect-ratio / sized container).
 
 ## Typography
