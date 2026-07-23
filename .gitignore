@@ -1,9 +1,11 @@
-# Skills: only the two localhost skills ship with the project.
+# Skills: only the bundled skills ship with the project.
 # Any other skills a session installs stay untracked.
 .claude/skills/*
 !.claude/skills/local-preview/
 !.claude/skills/local-preview/**
 !.claude/skills/localhost-up/
 !.claude/skills/localhost-up/**
+!.claude/skills/style-guide/
+!.claude/skills/style-guide/**
 
 node_modules/
