@@ -35,8 +35,9 @@ section{padding:100px 0}
 .btn-ghost:hover{border-color:var(--cream)}
 .arw{display:inline-block;will-change:transform}
 
-/* Header — component */
-header{position:sticky;top:0;z-index:60;background:rgba(20,17,13,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+/* Header — component (transparent at top, background fades in on scroll ~3%) */
+header{position:sticky;top:0;z-index:60;background:transparent;border-bottom:1px solid transparent;transition:background .35s ease,border-color .35s ease,backdrop-filter .35s ease}
+header.scrolled{background:rgba(20,17,13,.82);backdrop-filter:blur(12px);border-bottom-color:var(--line)}
 .nav{display:flex;align-items:center;gap:32px;height:74px;flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:23px;letter-spacing:-.02em;color:var(--cream)}
 .logo svg{height:auto;min-height:22px;width:auto;display:block}
@@ -70,7 +71,7 @@ header{position:sticky;top:0;z-index:60;background:rgba(20,17,13,.82);backdrop-f
 .hero::after,.page-hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   background:radial-gradient(120% 130% at 88% -10%, rgba(255,91,35,.20), transparent 46%),
              radial-gradient(90% 90% at 0% 110%, rgba(255,91,35,.08), transparent 50%),
-             linear-gradient(180deg, rgba(20,17,13,.55) 0%, rgba(20,17,13,.35) 40%, var(--ink) 92%)}
+             linear-gradient(180deg, rgba(20,17,13,.55) 0%, rgba(20,17,13,.28) 34%, rgba(20,17,13,.92) 84%, var(--ink) 100%)}
 .hero .base-container,.page-hero .base-container{position:relative;z-index:2}
 
 /* Hero (home) */

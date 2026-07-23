@@ -1,84 +1,84 @@
-# 🧭 Референси-натхнення: жива система (не список закладок)
+# 🧭 Inspiration References: a Living System (not a bookmark list)
 
-Це **не галерея для «подивитись гарне»**. Це **робочий процес**: на старті будь-якого дизайну Claude
-**сам** іде в топ-ресурси нижче, витягає ідеї під конкретний бриф і будує **layout-spec**, за яким верстає.
-Мета — щоб навіть з опису у 2–3 слова результат був на рівні Awwwards, а **не дефолтний/шаблонний**.
+This is **not a gallery for "looking at nice things."** It is a **working process**: at the start of any design, Claude
+**independently** goes to the top resources below, pulls ideas for the specific brief, and builds a **layout-spec** that drives the build.
+The goal — even a 2–3 word description should yield an Awwwards-level result, **not a default/templated** one.
 
-> **Золоте правило (незмінне):** беремо **вектор** — рівень, композицію, ритм, ідею руху. **Ніколи** не копіюємо
-> бренд, кольори, контент чи конкретний UI прикладу. Два проєкти не мають бути схожими (розд. 0 гайду).
+> **Golden rule (immutable):** we take the **vector** — the level, composition, rhythm, motion idea. We **never** copy
+> the brand, colors, content, or the specific UI of an example. No two projects should look alike (Guide, section 0).
 >
-> **⚠️ Реф = лише візуал. Каркас — ЗАВЖДИ за розділом 2 гайду:** `<section>` + `section*` → `base-container` (2.2),
-> нейминг + макс 2 класи (2.3), розмітка під конвертер (2.7), без Custom properties / longhand (2.8), компоненти (2.10),
-> футер/копірайт (2.11). Ідею лейауту з рефа вкладаємо в **наш** скелет — його класи/DOM/інлайни не тягнемо.
+> **⚠️ A reference is visual only. The skeleton is ALWAYS per Guide section 2:** `<section>` + `section*` → `base-container` (2.2),
+> naming + max 2 classes (2.3), converter-ready markup (2.7), no custom properties / longhand (2.8), components (2.10),
+> footer/copyright (2.11). The layout idea from a reference is poured into **our** skeleton — we never carry over its classes/DOM/inline styles.
 
 ---
 
-## ⛔ ОБОВʼЯЗКОВО на старті кожного дизайну (reference-first)
+## ⛔ MANDATORY at the start of every design (reference-first)
 
-Перш ніж верстати — **завжди**, навіть якщо бриф короткий:
+Before building — **always**, even if the brief is short:
 
-1. **Візьми 2–3 релевантні рефи** з ресурсів нижче (під тип продукту/настрій із брифу).
-   - HTML-дружні (`WebFetch` читає добре): `reactbits.dev`, `minimal.gallery`, `land-book.com`.
-   - Важкий JS / галереї (краще **скрін + лінк** від дизайнера, або опис): `motionsites.ai`, `cosmos.so`,
+1. **Take 2–3 relevant references** from the resources below (matched to the product type / mood in the brief).
+   - HTML-friendly (`WebFetch` reads them well): `reactbits.dev`, `minimal.gallery`, `land-book.com`.
+   - Heavy JS / galleries (better to get a **screenshot + link** from the designer, or a description): `motionsites.ai`, `cosmos.so`,
      `mobbin.com`, `sceneai.art`, `landinghero.ai`, `superdesign.dev`, `a1.gallery`.
-   - Код-компоненти (реальні реалізації, не картинка): `reactbits.dev`, **21st.dev (MCP)**.
-2. **Витягни layout-spec** (шаблон нижче) — це і є орієнтир.
-3. **Верстай за spec**, тримаючи індивідуальність (свої кольори/шрифти/контент).
-4. **Звір фінал** зі spec: рівень, ритм, signature — на місці? Якщо вийшло «як будь-який шаблон» — переробити.
+   - Code components (real implementations, not an image): `reactbits.dev`, **21st.dev (MCP)**.
+2. **Extract a layout-spec** (template below) — this is the reference point.
+3. **Build to the spec**, keeping individuality (own colors/fonts/content).
+4. **Check the final** against the spec: level, rhythm, signature — all present? If it came out "like any template" — redo it.
 
-Якщо дизайнер **кинув свій реф** (скрін/лінк/промпт) — він у пріоритеті над бібліотекою. Бібліотека — це коли
-рефа немає, а працювати треба одразу на топ-рівні.
+If the designer **provides their own reference** (screenshot/link/prompt) — it takes priority over the library. The library is for when
+there is no reference but the work must be at top level from the first move.
 
 ---
 
-## 📚 Джерела та для чого кожне
+## 📚 Sources and what each is for
 
-| Ресурс | Тип | Беру звідси |
+| Resource | Type | What I take from it |
 |---|---|---|
-| [motionsites.ai](https://motionsites.ai/) | галерея анімованих сайтів | ідеї руху, кінематографічність, ритм появи секцій |
-| [sceneai.art](https://sceneai.art/landing-pages?type=free&category=hero+section) | hero / лендинг патерни | структура героя, композиція першого екрану |
-| [mobbin.com](https://mobbin.com/discover/apps/web/latest) | UI-флоу застосунків | навігація, стани, патерни інтерфейсу |
-| [21st.dev](https://21st.dev/) | **MCP**, код-компоненти | готові реалізації компонентів/анімацій (свій ключ — див. нижче) |
-| [superdesign.dev](https://superdesign.dev/library) | лендинг-стилі | напрям стилю, композиція лендингів |
-| [landinghero.ai](https://www.landinghero.ai/library) | лендинг-бібліотека | структура секцій лендингу |
-| [a1.gallery](https://www.a1.gallery/) | галерея сайтів | вектор рівня, атмосфера |
-| [land-book.com](https://land-book.com/?search) | галерея лендингів | лейаут-ритм, типо-ієрархія |
-| [reactbits.dev](https://reactbits.dev/) | код-компоненти React | реальні мікро-інтеракції/анімації |
-| [cosmos.so](https://www.cosmos.so/) | візуальний муд-борд | напрям настрою, арт-дирекшн |
-| [minimal.gallery](https://minimal.gallery/) | мінімалістичні сайти | чистота, простір, типографіка |
+| [motionsites.ai](https://motionsites.ai/) | gallery of animated sites | motion ideas, cinematic feel, rhythm of section reveals |
+| [sceneai.art](https://sceneai.art/landing-pages?type=free&category=hero+section) | hero / landing patterns | hero structure, first-screen composition |
+| [mobbin.com](https://mobbin.com/discover/apps/web/latest) | app UI flows | navigation, states, interface patterns |
+| [21st.dev](https://21st.dev/) | **MCP**, code components | ready component/animation implementations (own key — see below) |
+| [superdesign.dev](https://superdesign.dev/library) | landing styles | style direction, landing composition |
+| [landinghero.ai](https://www.landinghero.ai/library) | landing library | landing section structure |
+| [a1.gallery](https://www.a1.gallery/) | site gallery | level vector, atmosphere |
+| [land-book.com](https://land-book.com/?search) | landing gallery | layout rhythm, type hierarchy |
+| [reactbits.dev](https://reactbits.dev/) | React code components | real micro-interactions / animations |
+| [cosmos.so](https://www.cosmos.so/) | visual mood-board | mood direction, art direction |
+| [minimal.gallery](https://minimal.gallery/) | minimalist sites | cleanliness, whitespace, typography |
 
 ---
 
-## 🧩 Шаблон layout-spec (витягую з рефа під бриф)
+## 🧩 Layout-spec template (extracted from a reference for the brief)
 
 ```
-Бриф (кілька слів): …
-Рефи (2–3, з поміткою що саме беру): …
+Brief (a few words): …
+References (2–3, noting exactly what I take): …
 
-1. Композиція героя   — тип (full-bleed фото / спліт / текст-домінанта / 3D), що в фокусі
-2. Сітка              — колонки/асиметрія, base-container, повітря
-3. Ритм секцій        — порядок, зміна щільності, темні/світлі блоки
-4. Типо-ієрархія      — контраст display↔body, вага, letter-spacing
-5. Рух                — що анімуємо, кінематографічно; hover = 350ms (розд. 2.9)
-6. Signature-елемент  — одна сміливість, решта тиха
-7. Що НЕ беремо       — бренд/кольори/контент прикладу (тільки вектор)
+1. Hero composition   — type (full-bleed photo / split / text-dominant / 3D), what's in focus
+2. Grid               — columns/asymmetry, base-container, whitespace
+3. Section rhythm     — order, density shifts, dark/light blocks
+4. Type hierarchy     — display↔body contrast, weight, letter-spacing
+5. Motion             — what we animate, cinematic; hover = 350ms (section 2.9)
+6. Signature element  — one bold move, everything else quiet
+7. What we DON'T take — the example's brand/colors/content (vector only)
 ```
 
-Результат spec → це орієнтир, а не макет-під-копію.
+The resulting spec → a reference point, not a layout to copy.
 
 ---
 
-## 🔑 21st.dev — свій ключ (кожен генерує власний)
+## 🔑 21st.dev — your own key (each person generates their own)
 
-Ключ 21st **особистий** (привʼязаний до акаунта і квоти власника). **Кожен дизайнер генерує свій** —
-не використовуй чужий (спільний = їсть квоту власника й відвалиться при перевипуску).
+The 21st key is **personal** (tied to the owner's account and quota). **Each designer generates their own** —
+do not use someone else's (a shared key eats the owner's quota and breaks on regeneration).
 
-1. Згенеруй ключ: `21st.dev → Settings → API Key`.
-2. Додай MCP (підстав **свій** ключ замість `API_KEY_21ST`):
+1. Generate a key: `21st.dev → Settings → API Key`.
+2. Add the MCP (substitute **your** key for `API_KEY_21ST`):
 
 ```bash
 claude mcp add --transport http 21st https://21st.dev/api/mcp --header "x-api-key: API_KEY_21ST"
 ```
 
-> ⚠️ Ніколи не коміть реальний ключ у git / у цей гайд. Тримай його локально
-> (`.claude/settings.local.json`, який в `.gitignore`).
+> ⚠️ Never commit a real key to git / to this guide. Keep it locally
+> (`.claude/settings.local.json`, which is in `.gitignore`).

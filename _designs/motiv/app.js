@@ -1,5 +1,15 @@
 /* Shared behaviours for every MOTIV page — one organism (burger, media, reveal, hovers). */
 
+/* ---- Header background on scroll (transparent at top, fades in past ~3% viewport) ---- */
+(function(){
+  var h=document.querySelector('header');
+  if(!h) return;
+  function upd(){ h.classList.toggle('scrolled', window.scrollY > window.innerHeight*0.03); }
+  upd();
+  window.addEventListener('scroll',upd,{passive:true});
+  window.addEventListener('resize',upd);
+})();
+
 /* ---- Burger / mobile menu (component) ---- */
 (function(){
   var burger=document.getElementById('burgerBtn'),
@@ -100,8 +110,26 @@ if(G){
     G.utils.toArray('.proj, .member').forEach(function(c){ var f=c.querySelector('.fill'), h=c.querySelector('h3'); hov(c,function(tl){ if(f) tl.to(f,{scale:1.05,duration:.35,ease:'power2.out'},0); if(h) tl.to(h,{color:'#ff5b23',duration:.35},0); }); });
     G.utils.toArray('.srv').forEach(function(s){ var h=s.querySelector('h4'); hov(s,function(tl){ tl.to(h,{color:'#ff5b23',duration:.35,ease:'power2.out'},0); }); });
     G.utils.toArray('.fcol a').forEach(function(a){ hov(a,function(tl){ tl.to(a,{x:5,color:'#f2ede3',duration:.35,ease:'power2.out'},0); }); });
-    // Logo: the accent letter disintegrates into dots and reassembles on hover (stays left).
-    G.utils.toArray('.logo').forEach(function(b){ var dots=b.querySelectorAll('.logo-mark circle'); if(!dots.length) return;
-      hov(b,function(tl){ dots.forEach(function(dot,i){ tl.to(dot,{x:Math.cos(i*1.7)*9,y:Math.sin(i*2.3)*9,opacity:.25,duration:.35,ease:'power2.out'},0); }); }); });
+    // Logo: on hover the accent dots draw into a little planet (ring) and orbit — they never disappear.
+    G.utils.toArray('.logo').forEach(function(b){
+      var mark=b.querySelector('.logo-mark'), dots=b.querySelectorAll('.logo-mark circle');
+      if(!mark||!dots.length) return;
+      var cx=12, cy=12, R=7.6, n=dots.length, spin=null;
+      b.addEventListener('mouseenter',function(){
+        dots.forEach(function(dot,i){
+          var a=(i/n)*Math.PI*2 - Math.PI/2;
+          G.to(dot,{x:cx+Math.cos(a)*R-parseFloat(dot.getAttribute('cx')),
+                    y:cy+Math.sin(a)*R-parseFloat(dot.getAttribute('cy')),
+                    duration:.35,ease:'power2.out'},0);
+        });
+        if(spin) spin.kill();
+        spin=G.to(mark,{rotation:'+=360',duration:6,ease:'none',repeat:-1,transformOrigin:'50% 50%'});
+      });
+      b.addEventListener('mouseleave',function(){
+        if(spin){ spin.kill(); spin=null; }
+        G.to(mark,{rotation:0,duration:.5,ease:'power2.out',transformOrigin:'50% 50%'});
+        dots.forEach(function(dot){ G.to(dot,{x:0,y:0,duration:.35,ease:'power2.out'}); });
+      });
+    });
   });
 }
