@@ -230,6 +230,22 @@ padding changes; never leave a stale hardcoded header height behind.
 | `section-top` | 100px 0 0 | 130px 0 0 | 80px 0 0 | 60px 0 0 |
 | `section-bot` | 0 0 100px | 0 0 130px | 0 0 80px | 0 0 60px |
 
+> ### ⛔ SUPER-HARD HOOK — no doubled spacing where two same-background sections meet
+> When two adjacent sections share the **same background**, their spacing **collides and doubles**: the
+> bottom padding of the upper section **plus** the top padding of the lower section render as **one giant gap**
+> (e.g. `130px + 130px = 260px`). This is **always wrong** — between two same-bg sections the visual gap must be
+> **exactly one** `section` step, never two.
+>
+> **The rule (mandatory, every page, every time):** whenever two same-bg sections are adjacent, add a subclass
+> to **one** of them and remove **one** side of its spacing — use **`section-top`** (drop the bottom of the
+> upper one → keep only the lower's top), **`section-bot`** (drop the top of the lower one → keep only the
+> upper's bottom), or a **`section` variant with the colliding side zeroed**. Never leave both a bottom and a
+> top between the same background. Two sections with **different** backgrounds keep both paddings (the colour
+> change justifies the larger gap).
+>
+> **Never** hack this with inline `style="padding-top:0"` — it must be a class (naming rules below). Before
+> shipping, walk every section boundary top-to-bottom: same bg + full `section` on both sides = **defect, fix it**.
+
 ## Class naming
 
 - **lowercase-hyphen**, section prefix: `trust-head`, `approach-title`, `foot-grid`.
