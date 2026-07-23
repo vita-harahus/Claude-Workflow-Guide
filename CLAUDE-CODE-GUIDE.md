@@ -94,6 +94,15 @@ decoration without function, deviation from the grid/breakpoints, and so on.
 The goal is to keep a weak decision from landing in the layout "on autopilot". The final word is always the
 designer's, but **consciously**, not by default.
 
+## 🫀 One system: Style Guide ⇄ site
+
+The **Style Guide is the single source of truth** for the design system, and the site is built from the same
+tokens — they are **one organism**, not two separate files. A change to a token in the Style Guide (a colour,
+a type size, a radius, a button style) **propagates to the site**, and a token change made on the site is
+reflected back in the Style Guide. Keep them in sync: share the same CSS custom properties (`--t-*`, colour
+roles, radius, spacing) so editing one place updates both. Never let the Style Guide and the live design drift
+apart.
+
 ## ⛔ Mandatory: no AI defaults, Awwwards level
 
 The design system below is a **technical markup skeleton**, not a visual recipe. Visually, every project must
@@ -257,8 +266,10 @@ asked and without leaving gradients/placeholders as the final state.
 - **Maximum 2 fonts** (ideal); **3 — the ceiling, only with justification**; **4 or more — forbidden**. On a
   request for 3+ fonts Claude stops, says it harms consistency and readability, and **asks the designer whether
   they are sure** (see "🛑 Guardrail" above) — and continues only after confirmation.
-- **Priority — Google Fonts.** For fonts outside Google Fonts, the web-embed license is checked first or agreed
-  with the designer; self-installation is not allowed.
+- **Priority — Google Fonts.** If a chosen font is **not on Google Fonts** (e.g. Helvetica Neue, Proxima Nova,
+  a system font), Claude **triggers the guardrail**: it stops, says the font is not a Google Font, and **asks the
+  designer to confirm it's OK** (license / web-embed / hosting) before using it — do not silently ship a
+  non-Google font. Self-installation is never allowed. Continue only after the designer confirms.
 - Roles: **Primary — headings H1–H6, logo, decor**; **Secondary — body text, UI, navigation, footer**.
 - **Buttons/links** — at the designer's discretion; by default **Secondary** is recommended (better
   readability at small sizes and in interaction).
