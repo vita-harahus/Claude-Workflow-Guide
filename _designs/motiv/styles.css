@@ -61,6 +61,8 @@ header.scrolled{background:rgba(20,17,13,.82);backdrop-filter:blur(12px);border-
 /* Nav links only — never restyle the .btn component (keep it consistent everywhere) */
 .mobile-menu a:not(.btn){font-family:var(--display);font-size:26px;font-weight:700;color:var(--cream);padding:16px 0;border-bottom:1px solid var(--line)}
 .mobile-menu .btn{margin-top:24px;width:100%}
+/* Logo in the burger menu is mandatory (component rule) — top-left, never nav-link styling */
+.mobile-menu a.logo{position:absolute;top:22px;left:28px;padding:0;border:0;font-size:23px;font-weight:800}
 .mm-close{position:absolute;top:22px;right:20px;width:42px;height:42px;border:0;background:none;color:var(--cream);cursor:pointer;display:grid;place-items:center;transition:color .35s}
 .mm-close:hover{color:var(--accent)}
 
@@ -68,6 +70,7 @@ header.scrolled{background:rgba(20,17,13,.82);backdrop-filter:blur(12px);border-
 .hero,.page-hero{position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:linear-gradient(150deg,#1a1611,#14110d)}
 .hero-bg video{width:100%;height:100%;object-fit:cover;opacity:.26}
+.page-hero .hero-bg video{opacity:.44}
 .hero::after,.page-hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   background:radial-gradient(120% 130% at 88% -10%, rgba(255,91,35,.20), transparent 46%),
              radial-gradient(90% 90% at 0% 110%, rgba(255,91,35,.08), transparent 50%),

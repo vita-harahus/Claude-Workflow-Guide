@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Women — forma</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=2">
 </head>
 <body>
 
@@ -37,6 +37,7 @@
 </header>
 <div class="mm-overlay" id="mmOverlay"></div>
 <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+  <a href="/" class="brand mm-brand" aria-label="forma — home"><span class="mark">f</span>forma</a>
   <button class="mm-close" id="mmClose" aria-label="Close menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   <a href="/women.html">Women</a><a href="/#new">Men</a><a href="/#">Accessories</a>
   <a href="/#new">What’s New</a><a href="/#sale">We Made Too Much</a><a href="/#" class="hot">Mother’s Day</a>
@@ -46,9 +47,14 @@
 <!-- Page hero -->
 <section class="pagehead" id="top">
   <div class="base-container">
-    <div class="eyebrow-cat" data-reveal>Women</div>
-    <h1 data-reveal>Made to move with you.</h1>
-    <p data-reveal>Technical layers, tights and tops engineered for the studio, the road and everything in between.</p>
+    <div class="ph-grid">
+      <div class="ph-copy">
+        <h1 data-reveal>Made to move with you.</h1>
+        <p data-reveal>Technical layers, tights and tops engineered for the studio, the road and everything in between.</p>
+        <div class="ph-cta" data-reveal><a href="#new" class="btn btn-dark">Shop new in <span class="arw">→</span></a></div>
+      </div>
+      <div class="ph-media" data-reveal><img data-q="woman jumping fitness activewear bright energetic" data-o="portrait" alt="Women collection"></div>
+    </div>
   </div>
 </section>
 
@@ -138,7 +144,7 @@
 <!-- Cart drawer (component reuse) -->
 <div class="cart-overlay" id="cartOverlay"></div>
 <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping bag">
-  <div class="cart-head">Your bag (<span id="cartCount">0</span>)<button class="cart-x" id="cartClose" aria-label="Close bag">×</button></div>
+  <div class="cart-head"><span>Your bag (<span id="cartCount">0</span>)</span><button class="cart-x" id="cartClose" aria-label="Close bag">×</button></div>
   <div class="cart-items" id="cartItems"></div>
   <div class="cart-foot">
     <div class="cart-sub">Subtotal<span id="cartSub">$0</span></div>
@@ -173,6 +179,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="app.js"></script>
+<script src="app.js?v=2"></script>
 </body>
 </html>
