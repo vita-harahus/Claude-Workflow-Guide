@@ -110,24 +110,28 @@ if(G){
     G.utils.toArray('.proj, .member').forEach(function(c){ var f=c.querySelector('.fill'), h=c.querySelector('h3'); hov(c,function(tl){ if(f) tl.to(f,{scale:1.05,duration:.35,ease:'power2.out'},0); if(h) tl.to(h,{color:'#ff5b23',duration:.35},0); }); });
     G.utils.toArray('.srv').forEach(function(s){ var h=s.querySelector('h4'); hov(s,function(tl){ tl.to(h,{color:'#ff5b23',duration:.35,ease:'power2.out'},0); }); });
     G.utils.toArray('.fcol a').forEach(function(a){ hov(a,function(tl){ tl.to(a,{x:5,color:'#f2ede3',duration:.35,ease:'power2.out'},0); }); });
-    // Logo: on hover the accent dots draw into a little planet (ring) and orbit — they never disappear.
+    // Logo: on hover the accent dots stay in place (left) and jitter chaotically — never disappear; settle back on leave.
     G.utils.toArray('.logo').forEach(function(b){
-      var mark=b.querySelector('.logo-mark'), dots=b.querySelectorAll('.logo-mark circle');
-      if(!mark||!dots.length) return;
-      var cx=12, cy=12, R=7.6, n=dots.length, spin=null;
+      var dots=b.querySelectorAll('.logo-mark circle');
+      if(!dots.length) return;
+      var tweens=[];
+      function stop(){ tweens.forEach(function(t){ t.kill(); }); tweens=[]; }
       b.addEventListener('mouseenter',function(){
-        dots.forEach(function(dot,i){
-          var a=(i/n)*Math.PI*2 - Math.PI/2;
-          G.to(dot,{x:cx+Math.cos(a)*R-parseFloat(dot.getAttribute('cx')),
-                    y:cy+Math.sin(a)*R-parseFloat(dot.getAttribute('cy')),
-                    duration:.35,ease:'power2.out'},0);
+        stop();
+        dots.forEach(function(dot){
+          (function jit(){
+            tweens.push(G.to(dot,{
+              x:(Math.random()*2-1)*3.2,
+              y:(Math.random()*2-1)*3.2,
+              duration:.26+Math.random()*.22,
+              ease:'sine.inOut',
+              onComplete:jit
+            }));
+          })();
         });
-        if(spin) spin.kill();
-        spin=G.to(mark,{rotation:'+=360',duration:6,ease:'none',repeat:-1,transformOrigin:'50% 50%'});
       });
       b.addEventListener('mouseleave',function(){
-        if(spin){ spin.kill(); spin=null; }
-        G.to(mark,{rotation:0,duration:.5,ease:'power2.out',transformOrigin:'50% 50%'});
+        stop();
         dots.forEach(function(dot){ G.to(dot,{x:0,y:0,duration:.35,ease:'power2.out'}); });
       });
     });
