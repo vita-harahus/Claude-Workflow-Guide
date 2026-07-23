@@ -83,9 +83,13 @@ header.scrolled{background:rgba(20,17,13,.82);backdrop-filter:blur(12px);border-
              linear-gradient(180deg, rgba(20,17,13,0) 0%, rgba(20,17,13,.08) 24%, rgba(20,17,13,.34) 54%, rgba(20,17,13,.72) 78%, rgba(20,17,13,.93) 90%, var(--ink) 100%)}
 .hero .base-container,.page-hero .base-container{position:relative;z-index:2}
 
-/* Hero (home) — top padding 130px = 70px header + 60px min gap (HOOK) */
-.hero{padding:130px 0 90px;position:relative;overflow:hidden}
+/* Hero (home) — HOMEPAGE banner min-height (hardcoded per breakpoint), height stays auto.
+   Top padding 130px = 70px header + 60px min gap (HOOK). Content vertically centered. */
+.hero{padding:130px 0 90px;position:relative;overflow:hidden;min-height:730px;height:auto;display:flex;flex-direction:column;justify-content:center}
 @media(min-width:1280px){.hero{padding:150px 0 110px}}
+@media(min-width:1440px){.hero{min-height:100vh}}
+@media(max-width:991px){.hero{min-height:700px}}
+@media(max-width:767px){.hero{min-height:630px}}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:28px}
 .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
 .hero h1{font-family:var(--display);font-size:var(--t-display);line-height:1.2;font-weight:700;letter-spacing:-.03em;max-width:16ch;text-wrap:balance}
