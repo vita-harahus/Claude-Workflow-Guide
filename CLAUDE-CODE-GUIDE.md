@@ -180,11 +180,21 @@ min-height is just the floor. Base is `730px` and cascades up to Large; the over
 (`display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; overflow:hidden`). Never let hero
 text run to 3+ lines.
 
-**Header over the hero.** The header sits **on top of** the hero and **never adds to its height** — the hero
-keeps its full `min-height` (e.g. `100vh` fills exactly one viewport, header included). The header keeps its
-**own solid background** (it is not forced transparent). **The hero's top padding always equals the header
-height** so hero content clears the header — **hardcode this**. Implement by overlaying the header (e.g. pull
-the hero up by the header height with a negative margin) and setting `padding-top: <header-height>` on the hero.
+**Header over the hero — HOOK (ALWAYS).** The header is **`position: fixed`** (out of the flow — like
+`absolute`), so it **lays over** the banner. The header and banner are **NOT coupled** by any margin — never
+pull the hero up with a negative margin to fake the overlap. Because the fixed header is out of flow, the banner
+starts at the **very top of the page** and keeps its full natural `min-height` (e.g. `100vh` fills exactly one
+viewport, header included); its height **never changes** when the header changes. **The hero's top padding is
+ALWAYS `header-height + a minimum 60px gap`** so hero content clears the fixed header by **at least 60px** —
+hardcode this on **every** breakpoint (never less than 60px of clearance anywhere). This works for a transparent
+header (overlays the hero media) and a solid header alike.
+
+**Header height is NEVER a fixed value — HOOK (ALWAYS).** Set the header `height: auto`. Its height is built
+from **equal top and bottom padding around its tallest control** (the CTA button) — default **8px top / 8px
+bottom**. **Always COMPUTE the resulting header min-height** = `padding-top + control-height + padding-bottom`,
+**ROUND it to a whole pixel**, and use that single rounded number everywhere the header height is needed (the
+hero's negative margin and the hero top padding above). Re-compute it whenever the control's size or the header
+padding changes; never leave a stale hardcoded header height behind.
 
 ## Section structure (single for all pages)
 
