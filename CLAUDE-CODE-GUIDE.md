@@ -138,12 +138,13 @@ uniquely. Two projects should never look like siblings.
 Styles set on Base cascade both up and down. **An override is applied only where the value differs from Base.**
 All points are subject to checking: **1920 / 1440 / 1280 / 992 / 768 / 568 / 360**.
 
-## Hero / banner — min-height (hardcoded)
+## Hero / banner — min-height (hardcoded, HOMEPAGE ONLY)
 
-The hero/banner has a **fixed minimum height per breakpoint**. These values are mandatory and are not changed
-per project:
+⚠️ **These values apply to the HOMEPAGE hero/banner only — strictly.** Inner pages (about, product, listing,
+contact, etc.) have **smaller** banners; their height is left to the **designer's** discretion — do NOT apply
+the homepage figures there. The values below are the mandatory homepage banner minimum height per breakpoint:
 
-| Breakpoint | min-height |
+| Breakpoint | min-height (homepage) |
 |---|---|
 | Base (992–1279, incl. 1024) | `730px` |
 | Large (1280–1439) | `730px` |
