@@ -24,6 +24,9 @@ p{line-height:1.5}
 section{padding:100px 0}
 @media(min-width:1280px){section{padding:132px 0}}
 @media(max-width:767px){section{padding:72px 0}}
+/* Inter-section spacing HOOK: when two same-bg sections meet, one drops a side so the gap is ONE step, not two */
+.no-sp-top{padding-top:0}
+.no-sp-bot{padding-bottom:0}
 
 /* Buttons — component (no hop; never shrink, never wrap own label) */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:600;font-size:15px;
@@ -39,9 +42,10 @@ section{padding:100px 0}
    header and banner are NOT coupled by any margin. Transparent at top; background fades in on scroll ~3%. */
 header{position:fixed;top:0;left:0;right:0;z-index:60;background:transparent;border-bottom:1px solid transparent;transition:background .35s ease,border-color .35s ease,backdrop-filter .35s ease}
 header.scrolled{background:rgba(20,17,13,.82);backdrop-filter:blur(12px);border-bottom-color:var(--line)}
-/* Header height is auto — built from 8px top + 8px bottom padding around the CTA button (HOOK).
-   Computed min-height = 8 + 53(button) + 8 + 1(border) = 70px (used for the hero overlay below). */
-.nav{display:flex;align-items:center;gap:32px;padding:8px 0;flex-wrap:wrap}
+/* Header structure: header > .base-container (our container props) > .nav (header inner wrap).
+   Header height is auto — the inner wrap carries 10px top + 10px bottom padding around the CTA button (HOOK).
+   Computed min-height = 10 + 53(button) + 10 + 1(border) = 74px (used for the hero clearance below). */
+.nav{display:flex;align-items:center;gap:32px;padding:10px 0;flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:23px;letter-spacing:-.02em;color:var(--cream)}
 .logo svg{height:auto;min-height:22px;width:auto;display:block}
 .mainnav{display:flex;gap:28px;font-size:15px;font-weight:500}
@@ -72,7 +76,7 @@ header.scrolled{background:rgba(20,17,13,.82);backdrop-filter:blur(12px);border-
 /* Hero backdrop (muted video + brand glow) — shared by home + inner heroes */
 /* HOOK: the header is position:fixed (out of flow) so it LAYS OVER the banner — the two are NOT coupled by a
    negative margin. The banner starts at the very top of the page under the fixed header; its content clears the
-   header via top padding = header height (70px) + a minimum 60px gap = 130px (see .hero / .page-hero below). */
+   header via top padding = header height (74px) + a minimum 60px gap = 134px (see .hero / .page-hero below). */
 .hero,.page-hero{position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:linear-gradient(150deg,#1a1611,#14110d)}
 .hero-bg video{width:100%;height:100%;object-fit:cover;opacity:.26}
@@ -83,13 +87,10 @@ header.scrolled{background:rgba(20,17,13,.82);backdrop-filter:blur(12px);border-
              linear-gradient(180deg, rgba(20,17,13,0) 0%, rgba(20,17,13,.08) 24%, rgba(20,17,13,.34) 54%, rgba(20,17,13,.72) 78%, rgba(20,17,13,.93) 90%, var(--ink) 100%)}
 .hero .base-container,.page-hero .base-container{position:relative;z-index:2}
 
-/* Hero (home) — HOMEPAGE banner min-height (hardcoded per breakpoint), height stays auto.
-   Top padding 130px = 70px header + 60px min gap (HOOK). Content vertically centered. */
-.hero{padding:130px 0 90px;position:relative;overflow:hidden;min-height:730px;height:auto;display:flex;flex-direction:column;justify-content:center}
-@media(min-width:1280px){.hero{padding:150px 0 110px}}
-@media(min-width:1440px){.hero{min-height:100vh}}
-@media(max-width:991px){.hero{min-height:700px}}
-@media(max-width:767px){.hero{min-height:630px}}
+/* Hero (home) — top padding 134px = 74px header + 60px min gap (HOOK). Compact so the loop marquee
+   below stays visible on load; height is content-driven (no forced 100vh). */
+.hero{padding:134px 0 72px;position:relative;overflow:hidden}
+@media(min-width:1280px){.hero{padding:150px 0 88px}}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:28px}
 .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
 .hero h1{font-family:var(--display);font-size:var(--t-display);line-height:1.2;font-weight:700;letter-spacing:-.03em;max-width:16ch;text-wrap:balance}
@@ -98,9 +99,9 @@ header.scrolled{background:rgba(20,17,13,.82);backdrop-filter:blur(12px);border-
 .hero-sub p{font-size:var(--t-body-l);color:var(--muted);max-width:46ch;text-wrap:pretty}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
 
-/* Page hero (inner pages) — top padding 130px = 70px header + 60px min gap (HOOK); content centered */
-.page-hero{padding:130px 0 90px;min-height:560px;display:flex;flex-direction:column;justify-content:center}
-@media(min-width:1280px){.page-hero{padding:150px 0 110px;min-height:620px}}
+/* Page hero (inner pages) — top padding 134px = 74px header + 60px min gap (HOOK); content centered */
+.page-hero{padding:134px 0 90px;min-height:520px;display:flex;flex-direction:column;justify-content:center}
+@media(min-width:1280px){.page-hero{padding:150px 0 110px;min-height:560px}}
 /* Bottom mask — the warm inner-hero video melts fully into the next section's ink (no visible crop/seam) */
 .page-hero::before{content:"";position:absolute;left:0;right:0;bottom:0;height:42%;z-index:1;pointer-events:none;
   background:linear-gradient(180deg, transparent, rgba(20,17,13,.6) 55%, var(--ink) 90%)}
