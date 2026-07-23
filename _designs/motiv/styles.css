@@ -67,8 +67,9 @@ header.scrolled{background:rgba(20,17,13,.82);backdrop-filter:blur(12px);border-
 .mm-close:hover{color:var(--accent)}
 
 /* Hero backdrop (muted video + brand glow) — shared by home + inner heroes */
-/* Pull the hero UP under the sticky header so the transparent header overlays the VIDEO (not the body ink).
-   Header height is 74px (.nav) — without this the header sits over solid ink and looks opaque. */
+/* HOOK: the banner is ALWAYS pulled up under the sticky header so the transparent header overlays the VIDEO
+   (not the body ink), AND there is ALWAYS a minimum 60px gap from the header to the content on every breakpoint.
+   Header height is 74px (.nav); hero padding-top is 74 + 60 = 134px (see .hero / .page-hero below). */
 .hero,.page-hero{position:relative;overflow:hidden;margin-top:-74px}
 .hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:linear-gradient(150deg,#1a1611,#14110d)}
 .hero-bg video{width:100%;height:100%;object-fit:cover;opacity:.26}
@@ -79,9 +80,9 @@ header.scrolled{background:rgba(20,17,13,.82);backdrop-filter:blur(12px);border-
              linear-gradient(180deg, rgba(20,17,13,0) 0%, rgba(20,17,13,.08) 24%, rgba(20,17,13,.34) 54%, rgba(20,17,13,.72) 78%, rgba(20,17,13,.93) 90%, var(--ink) 100%)}
 .hero .base-container,.page-hero .base-container{position:relative;z-index:2}
 
-/* Hero (home) */
-.hero{padding:120px 0 90px;position:relative;overflow:hidden}
-@media(min-width:1280px){.hero{padding:150px 0 110px}}
+/* Hero (home) — top padding 134px = 74px header + 60px min gap (HOOK) */
+.hero{padding:134px 0 90px;position:relative;overflow:hidden}
+@media(min-width:1280px){.hero{padding:160px 0 110px}}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:28px}
 .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
 .hero h1{font-family:var(--display);font-size:var(--t-display);line-height:1.2;font-weight:700;letter-spacing:-.03em;max-width:16ch;text-wrap:balance}
@@ -90,9 +91,9 @@ header.scrolled{background:rgba(20,17,13,.82);backdrop-filter:blur(12px);border-
 .hero-sub p{font-size:var(--t-body-l);color:var(--muted);max-width:46ch;text-wrap:pretty}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
 
-/* Page hero (inner pages) */
-.page-hero{padding:120px 0 60px}
-@media(min-width:1280px){.page-hero{padding:150px 0 80px}}
+/* Page hero (inner pages) — top padding 134px = 74px header + 60px min gap (HOOK) */
+.page-hero{padding:134px 0 60px}
+@media(min-width:1280px){.page-hero{padding:160px 0 80px}}
 .page-hero h1{font-family:var(--display);font-size:var(--t-display);line-height:1.2;font-weight:700;letter-spacing:-.03em;max-width:16ch;text-wrap:balance;margin-top:20px}
 .page-hero p{font-size:var(--t-body-l);color:var(--muted);max-width:56ch;margin-top:26px;text-wrap:pretty}
 
