@@ -73,8 +73,8 @@ header{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid 
 .mobile-menu a{font-size:19px;font-weight:600;color:var(--ink);padding:14px 0;border-bottom:1px solid var(--line)}
 .mobile-menu a.hot{color:var(--red)}
 .mobile-menu .mm-region{margin-top:20px;font-size:14px;color:var(--muted);font-weight:500}
-/* Logo in the burger menu is mandatory (component rule) — top-left, never nav-link styling */
-.mobile-menu .brand{position:absolute;top:20px;left:26px;padding:0;border:0}
+/* Logo in the burger menu is mandatory (component rule) — top-left, vertically centered on the close (X) button */
+.mobile-menu .brand{position:absolute;top:20px;left:26px;height:42px;display:flex;align-items:center;padding:0;border:0}
 .mm-close{position:absolute;top:20px;right:18px;width:42px;height:42px;border:0;background:none;color:var(--ink);cursor:pointer;display:grid;place-items:center;transition:color .35s}
 .mm-close:hover{color:var(--red)}
 
